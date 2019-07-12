@@ -1,18 +1,21 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route } from "react-router-dom";
-
+import { MDBContainer} from "mdbreact";
 import PostFrontToBack from './Component/postWithUpload_frontToBack';
-import ListTous from './Component/ListTous'
+import List from './Component/List'
 import AfficheProfil from './Component/AfficheProfil'
  class App extends Component {
   render() {
     return (
       <Router>
-      <div className="container">
-        <Route path="/" exact component={PostFrontToBack} />
-        <Route path="/profil" exact component={ListTous} />
-        <Route path="/profil/:profilId" exact component={AfficheProfil} />
-      </div>
+        <MDBContainer>
+          <div className="container">
+            <Route path="/" component={PostFrontToBack} />
+            <Route path="/" component={List} />
+            <Route path="/profil/:profilId" exact component={AfficheProfil} />
+          </div>
+        </MDBContainer>
+      
     </Router>     
     )
   }
