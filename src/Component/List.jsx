@@ -16,7 +16,7 @@ export default class ListTous extends Component {
 
     }
     componentDidMount() {
-        axios.get('http://localhost:8080/profil')
+        axios.get('https://mandeha18.herokuapp.com/profil')
             .then(response => {
                 console.log('i am a response', response)
                 this.setState({ profil: response.data });
@@ -35,7 +35,7 @@ export default class ListTous extends Component {
                             <MDBCol md="4" className="colone">
                             <div className="card">
                                 {/* <Delete/> */}
-                                <img src={'http://localhost:8080/user/'+obj.photo_profil} alt="pdp" alt="upload images" width=" 250" height="250"/>
+                                <img src={'https://mandeha18.herokuapp.com/user/'+obj.photo_profil} alt="pdp" alt="upload images" width=" 250" height="250"/>
                                 <div className="card-body">
                                     <h5 className="card-title">{obj.nom}</h5>
                                     <p>{obj.email}</p>

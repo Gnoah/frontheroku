@@ -39,16 +39,27 @@ class PostFrontToBack extends React.Component {
     data.append('email',this.state.email);
     data.append('password',this.state.password)
 
-    fetch('http://localhost:8080/profil', {
+    fetch('https://mandeha18.herokuapp.com/profil', {
       method: 'POST',
       body: data,
     }).then((response) => {
       response.json().then((body) => {
-        this.setState({ photo_profil: `http://localhost:8080/profil/${body.photo_profil}` });
+        this.setState({ photo_profil: `https://mandeha18.herokuapp.com/profil/${body.photo_profil}` });
+        console.log('ity ilay body.fil',body.photo_profil);
+        
+      });
+      fetch('https://mandeha18.herokuapp.com/profil', {
+      method: 'GET',
+      body: data,
+    }).then((response) => {
+      response.json().then((body) => {
+        this.setState({ photo_profil: `https://mandeha18.herokuapp.com/profil/${body.photo_profil}` });
         console.log('ity ilay body.fil',body.photo_profil);
         
       });
     });
+    });
+    
   }
 
   render() {
@@ -60,8 +71,6 @@ class PostFrontToBack extends React.Component {
           name="email"  size="sm" />
         <MDBInput label="Password" type="password" value={this.state.value} onChange={this.onChange}
           name="password"  size="sm" /><br></br>
-    
-      
           <input ref={(ref) => { this.uploadInput = ref; }} type="file" name="photo_profil"/>
        
           <button>Ajouter</button>
